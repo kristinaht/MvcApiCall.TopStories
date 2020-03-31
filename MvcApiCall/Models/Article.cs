@@ -15,9 +15,12 @@ namespace MvcApiCall.Models
     public static List<Article> GetArticles(string apiKey)
     {
       var apiCallTask = ApiHelper.ApiCall(apiKey);
+      var result = apiCallTask.Result;
 
       JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
-      List<Article> articleList = JsonConvert.DeserializeObject<List<Article>>(jsonResponse["results"].ToString());
+      List<Article> articleList = JsonConvert.DeserializeObject<List<Article>>(jsonResponse["results"].ToString()); //we use DeserializeObject to create a list of Articles. grabs any JSON keys in respnse that match the names of the properties in our class. 
+
+      return articleList;
     }
   }
 }
