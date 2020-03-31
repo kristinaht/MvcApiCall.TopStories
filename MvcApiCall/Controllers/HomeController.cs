@@ -7,7 +7,7 @@ namespace MvcApiCall.Controllers
 	{
 		public IActionResult Index()
 		{
-			var allArticles = Article.GetArticles("Ws7xotfERIVKDMORGlCVhlmsfcoy8xKB");
+			var allArticles = Article.GetArticles(EnvironmentVariables.ApiKey); //GetArticles is a static method so that's why it is called on Article class itself.
 			return View(allArticles);
 		}
 	}
